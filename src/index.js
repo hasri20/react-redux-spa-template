@@ -1,22 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Route, Switch } from "react-router";
 import { Provider } from "react-redux";
-import { ConnectedRouter } from "connected-react-router";
-import configureStore from "./redux/configureStore";
-import history from "./middlewares/history";
 import reportWebVitals from "./reportWebVitals";
+import App from "~/redux/containers/appContainer";
+import configureStore from "~/redux/configureStore";
+import "~/assets/styles/main.scss";
 
 const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <Switch>
-        <Route exact path="/" render={() => <div>Match</div>} />
-        <Route render={() => <div>Miss</div>} />
-      </Switch>
-    </ConnectedRouter>
+    <App />
   </Provider>,
   document.getElementById("root")
 );
